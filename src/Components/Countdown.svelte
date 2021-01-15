@@ -1,7 +1,7 @@
 <script lang="ts">
     import Remainder from './Remainder.svelte';
-    import { onMount } from 'svelte';
     import TimeInterval from '../ViewModel/TimeInterval';
+    import { onMount } from 'svelte';
 
     export let countdownDate: Date;
 
@@ -19,10 +19,9 @@
 </script>
 
 <div class="countdown">
-    <Remainder value={timeRemaining.days} />
-    <Remainder value={timeRemaining.hours} />
-    <Remainder value={timeRemaining.minutes} />
-    <Remainder value={timeRemaining.seconds} />
+    {#each [timeRemaining.days, timeRemaining.hours, timeRemaining.minutes, timeRemaining.seconds] as remaining}
+        <Remainder value={remaining} />
+    {/each}
 </div>
 
 <style>

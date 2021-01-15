@@ -16,24 +16,15 @@
         const largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
 
         return [
-            'M',
-            start.x,
-            start.y,
-            'A',
-            radius,
-            radius,
-            0,
-            largeArcFlag,
-            0,
-            end.x,
-            end.y
+            'M', start.x, start.y,
+            'A', radius, radius, 0, largeArcFlag, 0, end.x, end.y
         ].join(' ');
     }
 </script>
 
 <div class="remainder">
     <svg>
-        <path fill="none" stroke="#ddd" stroke-width="8" d={describeArc(52, 52, 48, 0, 360 - value)} width="100" height="100"></path>
+        <path fill="none" stroke="#ddd" stroke-width="4" d={describeArc(52, 52, 48, 0, 360 - value)} width="100" height="100"></path>
     </svg>
     <span>{#if value < 10}0{/if}{value}</span>
 </div>
