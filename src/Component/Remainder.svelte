@@ -1,18 +1,20 @@
 <script lang="ts">
+    import Point from "../Model/Point";
+
     export let value: number;
 
-    function polarToCartesian(centerX: number, centerY: number, radius: number, angleInDegrees: number): { x: number, y: number } {
+    function polarToCartesian(center: Point, radius: number, angleInDegrees: number): Point {
         const angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
 
-        return {
-            x: centerX + radius * Math.cos(angleInRadians),
-            y: centerY + radius * Math.sin(angleInRadians)
-        };
+        return new Point(
+            center.x + radius * Math.cos(angleInRadians),
+            center.y + radius * Math.sin(angleInRadians)
+        );
     }
 
-    function describeArc(x: number, y: number, radius: number, startAngle: number, endAngle: number): string {
-        const start = polarToCartesian(x, y, radius, endAngle);
-        const end = polarToCartesian(x, y, radius, startAngle);
+    function describeArc(center: Point, radius: number, startAngle: number, endAngle: number): string {
+        const start = polarToCartesian(center, radius, endAngle);
+        const end = polarToCartesian(center, radius, startAngle);
         const largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
 
         return [
@@ -24,7 +26,7 @@
 
 <div class="remainder">
     <svg>
-        <path fill="none" stroke="#ddd" stroke-width="3" d={describeArc(133, 133, 130, 0, value * ((100 / 60) * (360 / 100)))}></path>
+        <path fill="none" stroke="#ddd" stroke-width="3" d={describeArc(new Point(133, 128), 130, 0, value * ((100 / 60) * (360 / 100)))}></path>
     </svg>
     <span>{#if value < 10}0{/if}{value}</span>
 </div>
@@ -41,7 +43,6 @@
         position: relative;
         width: 260px;
         height: 260px;
-        padding-top: .1rem;
     }
 
     svg {
@@ -49,6 +50,7 @@
         top: 0;
         left: 0;
         width: 280px;
+        overflow: visible;
         height: 280px;
     }
 </style>
