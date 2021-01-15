@@ -24,7 +24,7 @@
 
 <div class="remainder">
     <svg>
-        <path fill="none" stroke="#ddd" stroke-width="3" d={describeArc(133, 133, 130, 0, 360 - (360 / 100 * value))}></path>
+        <path fill="none" stroke="#ddd" stroke-width="3" d={describeArc(133, 133, 130, 0, value * ((100 / 60) * (360 / 100)))}></path>
     </svg>
     <span>{#if value < 10}0{/if}{value}</span>
 </div>
