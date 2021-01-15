@@ -1,4 +1,4 @@
-import App from './Components/App.svelte';
+import App from './Component/App.svelte';
 
 const app = new App({
     target: document.body,

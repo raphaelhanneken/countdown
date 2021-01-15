@@ -6,7 +6,7 @@
     export let selectedDate: Date;
 
     afterUpdate(() => {
-        window.localStorage.setItem('selectedDate', selectedDate);
+        window.localStorage.setItem('selectedDate', selectedDate.toString());
     })
 </script>
 
