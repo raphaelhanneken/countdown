@@ -29,8 +29,8 @@
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        justify-content: space-evenly;
-        margin-top: 50vh;
+        justify-content: space-between;
+        margin-top: 45vh;
         transform: translateY(-80%);
     }
 </style>

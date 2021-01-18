@@ -10,13 +10,7 @@
     })
 </script>
 
-<countdown>
+<main>
     <Datepicker start={new Date()} bind:selected={selectedDate} />
     <Countdown countdownDate={selectedDate} />
-</countdown>
-
-<style>
-    countdown {
-        padding: 1vw 5vw;
-    }
-</style>
+</main>

@@ -26,14 +26,13 @@
 
 <div class="remainder">
     <svg>
-        <path fill="none" stroke="#ddd" stroke-width="3" d={describeArc(new Point(133, 128), 130, 0, value * ((100 / 60) * (360 / 100)))}></path>
+        <path d={describeArc(new Point(133, 128), 130, 0, value * ((100 / 60) * (360 / 100)))}></path>
     </svg>
     <span>{#if value < 10}0{/if}{value}</span>
 </div>
 
 <style>
     .remainder {
-        color: #ddd;
         font-size: 8rem;
         font-weight: 100;
         display: flex;
@@ -46,11 +45,33 @@
     }
 
     svg {
+        stroke-width: 3;
+        fill: none;
         position: absolute;
         top: 0;
         left: 0;
         width: 280px;
         overflow: visible;
         height: 280px;
+    }
+
+    @media (prefers-color-scheme: light) {
+        .remainder {
+            color: var(--dark);
+        }
+
+        svg {
+            stroke: var(--dark);
+        }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .remainder {
+            color: var(--light);
+        }
+
+        svg {
+            stroke: var(--light);
+        }
     }
 </style>
