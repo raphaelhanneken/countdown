@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Point from "../Model/Point";
+    import Point from "../Entity/Point";
 
     export let value: number;
 
