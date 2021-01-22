@@ -13,20 +13,20 @@
     }
 
     function describeArc(center: Point, radius: number, startAngle: number, endAngle: number): string {
-        const start = polarToCartesian(center, radius, endAngle);
-        const end = polarToCartesian(center, radius, startAngle);
-        const largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
+        const start = polarToCartesian(center, radius, startAngle);
+        const end = polarToCartesian(center, radius, endAngle);
+        const largeArcFlag = endAngle + startAngle > 180 ? '1' : '0';
 
         return [
             'M', start.x, start.y,
-            'A', radius, radius, 0, largeArcFlag, 0, end.x, end.y
+            'A', radius, radius, 0, largeArcFlag, 1, end.x, end.y
         ].join(' ');
     }
 </script>
 
 <div class="remainder">
     <svg>
-        <path d={describeArc(new Point(133, 128), 130, 0, value * ((100 / 60) * (360 / 100)))}></path>
+        <path d={describeArc(new Point(130, 130), 130, 0, value * ((100 / 60) * (360 / 100)))}></path>
     </svg>
     <span>{#if value < 10}0{/if}{value}</span>
 </div>
